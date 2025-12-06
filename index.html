@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>ZenRide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+      /* Custom scrollbar for a cleaner look */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+      .perspective-container {
+        perspective: 1000px;
+      }
+      .map-3d {
+        transform: rotateX(45deg) scale(1.2);
+        transition: transform 1s ease-in-out;
+      }
+      .map-2d {
+        transform: rotateX(0deg) scale(1);
+        transition: transform 1s ease-in-out;
+      }
+      
+      /* Animations */
+      @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slide-up {
+        animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes pulseRing {
+        0% { transform: scale(0.8); opacity: 0.5; }
+        100% { transform: scale(2); opacity: 0; }
+      }
+      .pulse-ring::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; right: 0; bottom: 0;
+        border-radius: 50%;
+        border: 2px solid #0d9488; /* teal-600 */
+        animation: pulseRing 2s linear infinite;
+      }
+      .pulse-ring::after {
+        content: '';
+        position: absolute;
+        left: -10px; top: -10px; right: -10px; bottom: -10px;
+        border-radius: 50%;
+        border: 2px solid #5eead4; /* teal-300 */
+        animation: pulseRing 2s linear infinite;
+        animation-delay: 0.5s;
+      }
+
+      /* Chat Bubble Tail */
+      .bubble-left::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        bottom: 8px;
+        border-right: 8px solid #f1f5f9;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+      .bubble-right::before {
+        content: "";
+        position: absolute;
+        right: -8px;
+        bottom: 8px;
+        border-left: 8px solid #0f172a;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react-leaflet": "https://aistudiocdn.com/react-leaflet@^5.0.0",
+    "leaflet": "https://aistudiocdn.com/leaflet@^1.9.4",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.31.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-50 text-slate-800 antialiased overflow-hidden">
+    <div id="root"></div>
+  </body>
+</html>

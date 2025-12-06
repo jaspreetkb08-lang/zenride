@@ -1,0 +1,7 @@
+{
+  "name": "ZenRide",
+  "description": "A chill, ride-booking application with Indian context, offering various vehicle choices from Bikes to SUVs, live tracking, and smart route insights.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
